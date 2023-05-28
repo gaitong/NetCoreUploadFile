@@ -10,6 +10,10 @@ namespace DemoNetCoreUploadFile.Services
         public async Task<string> UploadFile(IFormFile file)
         {
             string path = "";
+            if(file == null)
+            {
+                return "Not found file";
+            }
             try
             {
                 if (file.Length > 0)
@@ -47,7 +51,7 @@ namespace DemoNetCoreUploadFile.Services
                 }
                 else
                 {
-                    return "File Upload Successful";
+                        return "File Upload Successful";
                 }
             }
             catch (Exception ex)
