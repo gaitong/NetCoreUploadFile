@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Demo NetCore Upload File</h1>
+    <p>Upload File <a href='@Url.Action("index","BufferedFileUpload")'>Here</a></p>
+</div>
+<div>
+    <h1>List files in server</h1>
+</div>
+</br>
+<div>
+    @foreach (var item in Model)
+    {
+        <p>@item</p>
+    }
+</div>
