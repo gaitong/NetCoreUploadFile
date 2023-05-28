@@ -7,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IBufferedFileUploadService, BufferedFileUploadLocalService>();
-builder.Services.AddTransient<IStreamFileUploadService, StreamFileUploadLocalService>();
 builder.Services.AddTransient<IFileManagementService, FileManagementService>();
 
 var app = builder.Build();

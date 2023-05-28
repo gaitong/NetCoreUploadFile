@@ -22,14 +22,8 @@ namespace DemoNetCoreUploadFile.Controllers
         {
             try
             {
-                if (await _bufferedFileUploadService.UploadFile(file))
-                {
-                    ViewBag.Message = "File Upload Successful";
-                }
-                else
-                {
-                    ViewBag.Message = "File Upload Failed";
-                }
+                var res = await _bufferedFileUploadService.UploadFile(file);
+                    ViewBag.Message = res;
             }
             catch (Exception ex)
             {

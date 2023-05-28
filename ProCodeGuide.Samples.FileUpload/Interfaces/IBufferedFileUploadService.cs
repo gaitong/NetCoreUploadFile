@@ -4,6 +4,6 @@ namespace DemoNetCoreUploadFile.Interfaces
 {
     public interface IBufferedFileUploadService
     {
-        Task<bool> UploadFile(IFormFile file);
+        Task<string> UploadFile(IFormFile file);
     }
 }

@@ -10,6 +10,6 @@
 @if(ViewBag.Message != null)
 {
     <div class="alert" style="margin-top:20px">
-        @ViewBag.Message
+        <p>@ViewBag.Message <a href='@Url.Action("index","Home")'>View</a></p>
     </div>
 }

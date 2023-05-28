@@ -7,7 +7,7 @@ namespace DemoNetCoreUploadFile.Services
 {
     public class BufferedFileUploadLocalService : IBufferedFileUploadService
     {
-        public async Task<bool> UploadFile(IFormFile file)
+        public async Task<string> UploadFile(IFormFile file)
         {
             string path = "";
             try
@@ -19,15 +19,35 @@ namespace DemoNetCoreUploadFile.Services
                     {
                         Directory.CreateDirectory(path);
                     }
+
+                    string[] dirs = Directory.GetFiles(path);
+                    var filesName = new List<string>();
+
+                    foreach (var item in dirs)
+                    {
+                        var fName = Path.GetFileName(item);
+                        filesName.Add(fName);
+                    }
+
                     using (var fileStream = new FileStream(Path.Combine(path, file.FileName), FileMode.Create))
                     {
                         await file.CopyToAsync(fileStream);
+
+                        var isReplace = filesName.FirstOrDefault(m => m == file.FileName);
+
+                        if(isReplace != null)
+                        {
+                            return "Replace File Upload Successful";
+                        }
+                        else
+                        {
+                            return "File Upload Successful";
+                        }
                     }
-                    return true;
                 }
                 else
                 {
-                    return false;
+                    return "File Upload Successful";
                 }
             }
             catch (Exception ex)
